@@ -1,40 +1,71 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="emerald">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    <link href="/dist/output.css" rel="stylesheet">
-</head>
-
-<body>
-    <div class="w-full h-screen flex">
-        <div>
-            <img src="./img/login.jpg" alt="loginImage" class="h-full w-full">
+    <link href="/dist/output.css" rel="stylesheet" />
+  </head>
+  <body onload="verifyLogged()" class="bg-base-300">
+    <div class="w-full h-screen flex flex-col md:flex-row">
+      <div>
+        <img src="./img/login.jpg" alt="loginImage" class="h-full w-full" />
+      </div>
+      <form
+        class="form-control gap-5 bg-primary py-2 px-3 justify-center items-center md:w-5/12 h-full"
+        id="form"
+        onsubmit="login(event)"
+      >
+        <h2 class="text-center text-2xl font-semibold">Iniciar sesión</h2>
+        <div class="form-control w-full">
+          <label class="label" for="username">
+            <span class="label-text">Nombre Usuario</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Type here"
+            id="username"
+            class="input input-bordered w-full"
+            required
+          />
         </div>
-        <form class="form-control gap-5 bg-primary py-2 px-3 justify-center items-center w-5/12 h-full" id="form" onsubmit="login(event)">
-            <h2 class="text-center text-2xl font-semibold">Login</h2>
-            <div class="form-control w-full">
-                <label class="label" for="username">
-                  <span class="label-text">Username</span>
-                </label>
-                <input type="text" placeholder="Type here" id="username" class="input input-bordered w-full" required />
-              </div>
-              <div class="form-control w-full">
-                <label class="label" for="password">
-                  <span class="label-text">Password</span>
-                </label>
-                <input type="password" placeholder="****" id="password" class="input input-bordered w-full" required/>
-              </div>
+        <div class="form-control w-full">
+          <label class="label" for="password">
+            <span class="label-text">Contraseña</span>
+          </label>
+          <input
+            type="password"
+            placeholder="****"
+            id="password"
+            class="input input-bordered w-full"
+            required
+          />
+        </div>
 
-            <button class="btn w-full">Login</button>
-            <p>Dont have a account? <a href="./pages/register.html" class="underline font-medium">Create account</a></p>
-        </form>
+        <button class="btn w-full">Login</button>
+        <p class="self-start">
+          Aún no tienes una cuenta?<br class="md:hidden" />
+          <a href="./pages/register.html" class="underline font-medium"
+            >Crea una cuenta</a
+          >
+        </p>
+      </form>
+    </div>
+    <!-- The button to open modal -->
+    <label for="my-modal-6" class="btn hidden" id="modal">open modal</label>
+    <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+    <div class="modal modal-bottom sm:modal-middle">
+      <div class="modal-box">
+        <span class="font-bold text-3xl" id="info-modal">
+          Cuenta creada con éxito!
+        </span>
+        <div class="modal-action">
+          <label for="my-modal-6" class="btn">Cerrar</label>
+        </div>
+      </div>
     </div>
 
     <script src="./js/index.js"></script>
-</body>
-
+  </body>
 </html>

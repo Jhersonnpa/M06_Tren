@@ -1,57 +1,85 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="emerald">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register</title>
-  <link rel="stylesheet" href="../dist/output.css">
-</head>
-
-
-<body>
-  <div class="w-full h-screen flex">
-    <div>
-      <img src="../img/register.jpg" alt="registerImage" class="h-full w-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="stylesheet" href="../dist/output.css" />
+  </head>
+  <body onload="verifyLogged()" class="bg-base-300">
+    <div class="w-full h-screen flex flex-col md:flex-row">
+      <div>
+        <img
+          src="../img/register.jpg"
+          alt="registerImage"
+          class="h-full w-full"
+        />
+      </div>
+      <form
+        class="form-control gap-5 bg-primary py-2 px-3 justify-center items-center md:w-5/12 h-full"
+        id="form"
+        onsubmit="register(event)"
+      >
+        <h2 class="text-center text-2xl font-semibold">Registro</h2>
+        <div class="form-control w-full">
+          <label class="label" for="username">
+            <span class="label-text">Nombre de Usuario</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Type here"
+            id="username"
+            class="input input-bordered w-full"
+            required
+          />
+        </div>
+        <div class="form-control w-full">
+          <label class="label" for="password">
+            <span class="label-text">Contraseña</span>
+          </label>
+          <input
+            type="password"
+            placeholder="****"
+            id="password"
+            class="input input-bordered w-full"
+            required
+          />
+        </div>
+        <div class="form-control w-full">
+          <label class="label" for="cPassword">
+            <span class="label-text">Confirma Contraseña</span>
+          </label>
+          <input
+            type="password"
+            placeholder="****"
+            id="cPassword"
+            class="input input-bordered w-full"
+            required
+          />
+        </div>
+        <button class="btn w-full">Crear cuenta</button>
+        <p>
+          Ya tengo una cuenta
+          <a href="../index.html" class="underline font-medium"
+            >Iniciar sesión</a
+          >
+        </p>
+      </form>
+      <!-- The button to open modal -->
+      <label for="my-modal-6" class="btn hidden" id="modal">open modal</label>
     </div>
-    <form class="form-control gap-5 bg-primary py-2 px-3 justify-center items-center w-5/12 h-full" id="form"
-      onsubmit="register(event)">
-      <h2 class="text-center text-2xl font-semibold">Register</h2>
-      <div class="form-control w-full">
-        <label class="label" for="username">
-          <span class="label-text">Username</span>
-        </label>
-        <input type="text" placeholder="Type here" id="username" class="input input-bordered w-full" required />
-      </div>
-      <div class="form-control w-full">
-        <label class="label" for="password">
-          <span class="label-text">Password</span>
-        </label>
-        <input type="password" placeholder="****" id="password" class="input input-bordered w-full" required />
-      </div>
-      <div class="form-control w-full">
-        <label class="label" for="cPassword">
-          <span class="label-text">Confirm Password</span>
-        </label>
-        <input type="password" placeholder="****" id="cPassword" class="input input-bordered w-full" required />
-      </div>
-      <button class="btn w-full">Create Account</button>
-      <p>I have an account <a href="../index.html" class="underline font-medium">Login</a></p>
-    </form>
-    <!-- The button to open modal -->
-    <label for="my-modal-6" class="btn hidden" id="modal">open modal</label>
-  </div>
-  <script src="../js/index.js"></script>
-  <input type="checkbox" id="my-modal-6" class="modal-toggle" />
-  <div class="modal modal-bottom sm:modal-middle">
-    <div class="modal-box">
-      <h3 class="font-bold text-3xl" id="info-modal">Congratulations random Internet user!</h3>
-      <div class="modal-action">
-        <label for="my-modal-6" class="btn">X</label>
+    <script src="../js/index.js"></script>
+    <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+    <div class="modal modal-bottom sm:modal-middle">
+      <div class="modal-box">
+        <span class="font-bold text-3xl" id="info-modal">
+          Cuenta creada con éxito!
+        </span>
+        <div class="modal-action">
+          <label for="my-modal-6" class="btn">Cerrar</label>
+        </div>
       </div>
     </div>
-  </div>
-</body>
-
+  </body>
 </html>

@@ -4,11 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <title>Home</title>
+    <title>Tren</title>
     <link rel="stylesheet" href="../dist/output.css" />
   </head>
   <body class="bg-base-300" onload="verifyLogged()">
@@ -16,7 +12,9 @@
       <!-- Navbar -->
       <div class="navbar bg-primary sm:px-4">
         <div class="flex-1">
-          <a href="./home.html" class="btn btn-ghost normal-case text-xl">Renfito</a>
+          <a href="./home.html" class="btn btn-ghost normal-case text-xl"
+            >Renfito</a
+          >
         </div>
 
         <!-- Menu -->
@@ -118,41 +116,10 @@
           </div>
         </div>
       </div>
-      <h1 class="mt-6 mx-auto text-4xl font-medium text-center">
-        Reserva tu boleto
-      </h1>
-      <!-- Main -->
-      <main
-        class="w-full h-3/4 flex flex-col md:flex-row gap-4 justify-center items-center py-3"
-      >
-        <div class="card w-full max-w-sm bg-base-100 shadow-xl">
-          <figure class="px-10 pt-10">
-            <img
-              src="../img/vagonBasico.jpg"
-              alt="Vagon Basico"
-              class="rounded-xl"
-            />
-          </figure>
-          <div class="card-body items-center text-center">
-            <h2 class="card-title">Boleto Basico</h2>
-            <div class="card-actions">
-              <button class="btn btn-primary"><a href="./tren.html">Reservar</a></button>
-            </div>
-          </div>
-        </div>
 
-        <div class="card w-full max-w-sm bg-base-100 shadow-xl">
-          <figure class="px-10 pt-10">
-            <img src="../img/vagonVIP.jpg" alt="Vagon VIP" class="rounded-xl" />
-          </figure>
-          <div class="card-body items-center text-center">
-            <h2 class="card-title">Boleto VIP</h2>
-            <div class="card-actions">
-              <button class="btn btn-primary">
-                <a href="./trenVIP.html">Reservar &nbsp; <i class="bx bxs-crown text-yellow-600"></i></a>
-              </button>
-            </div>
-          </div>
+      <main class="w-full h-96 my-4 px-2 py-4">
+        <div id="tren w-52 p-10 bg-primary grid grid-flow-col">
+          hola
         </div>
       </main>
 
@@ -218,6 +185,7 @@
         </div>
       </footer>
     </div>
+
     <script src="../js/index.js"></script>
   </body>
 </html>
