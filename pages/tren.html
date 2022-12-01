@@ -4,10 +4,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
     <title>Tren</title>
     <link rel="stylesheet" href="../dist/output.css" />
   </head>
-  <body class="bg-base-300" onload="verifyLogged()">
+  <body
+    class="bg-base-300"
+    onload="verifyLogged(), printarTren(), actualizarCarro()"
+  >
     <div class="w-full min-h-screen flex flex-col justify-between">
       <!-- Navbar -->
       <div class="navbar bg-primary sm:px-4">
@@ -27,10 +34,14 @@
               ></a>
             </li>
             <li class="font-semibold rounded px-1 btn-ghost">
-              <a href="./home.html">Reservar</a>
+              <a href="./tren.html" onclick="localStorage.setItem('vip',false)"
+                >Reservar</a
+              >
             </li>
             <li class="font-semibold rounded px-1 btn-ghost">
-              <a href="./home.html">Reservar VIP</a>
+              <a href="./tren.html" onclick="localStorage.setItem('vip',true)"
+                >Reservar VIP</a
+              >
             </li>
             <li onclick="logout()" class="font-semibold rounded px-1 btn-ghost">
               <a href="../index.html">Logout <i class="bx bx-log-out"></i></a>
@@ -68,10 +79,16 @@
                 ></a>
               </li>
               <li>
-                <a>Reservar</a>
+                <a
+                  href="./tren.html"
+                  onclick="localStorage.setItem('vip',false)"
+                  >Reservar</a
+                >
               </li>
               <li>
-                <a>Reservar VIP <i class="bx bxs-crown text-yellow-600"></i></a>
+                <a href="./tren.html" onclick="localStorage.setItem('vip',true)"
+                  >Reservar VIP <i class="bx bxs-crown text-yellow-600"></i
+                ></a>
               </li>
               <li onclick="logout()">
                 <a href="../index.html"><i class="bx bx-log-out"></i> Logout</a>
@@ -98,7 +115,7 @@
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                   />
                 </svg>
-                <span class="badge badge-sm indicator-item">0</span>
+                <span class="badge badge-sm indicator-item" id="items">0</span>
               </div>
             </label>
             <div
@@ -106,10 +123,18 @@
               class="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow"
             >
               <div class="card-body">
-                <span class="font-bold text-lg">0 Items</span>
-                <span class="text-info">Subtotal: $0</span>
+                <span class="font-bold text-lg"
+                  ><span id="infoItems">0</span> Items</span
+                >
+                <span id="vips" class="font-medium"></span>
+                <span id="basics" class="font-medium"></span>
+                <span class="text-info font-semibold"
+                  >Subtotal: <span id="total">0</span>$</span
+                >
                 <div class="card-actions">
-                  <button class="btn btn-primary btn-block">Ver carro</button>
+                  <button class="btn btn-primary btn-block" onclick="pagar()">
+                    Pagar
+                  </button>
                 </div>
               </div>
             </div>
@@ -117,10 +142,23 @@
         </div>
       </div>
 
-      <main class="w-full h-96 my-4 px-2 py-4">
-        <div id="tren w-52 p-10 bg-primary grid grid-flow-col">
-          hola
+      <main
+        class="form-control w-full justify-evenly items-center gap-12 my-4 px-2 py-4"
+      >
+        <h2 class="mb-3 text-3xl font-medium">Vagon <span id="vip"></span></h2>
+        <div class="flex w-full min-h-min p-2">
+          <ul class="flex w-full gap-5 justify-center items-center list-none">
+            <li><img src="../img/chairOK.png" alt="disponible" />Disponible</li>
+            <li>
+              <img src="../img/chairReserved.png" alt="reservada" />Reservada
+            </li>
+            <li><img src="../img/chairDisabled.png" alt="ocupada" />Ocupada</li>
+            <li class="self-end text-lg">
+              Precio: <span id="precio" class="font-medium">0</span>$
+            </li>
+          </ul>
         </div>
+        <div id="tren" class="w-full h-full form-control gap-4"></div>
       </main>
 
       <footer
@@ -186,6 +224,19 @@
       </footer>
     </div>
 
+    <!-- The button to open modal -->
+    <label for="my-modal-6" class="btn hidden" id="modal">open modal</label>
+    <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+    <div class="modal modal-bottom sm:modal-middle">
+      <div class="modal-box">
+        <span class="font-bold text-3xl" id="info-modal">
+          Cuenta creada con éxito!
+        </span>
+        <div class="modal-action">
+          <label for="my-modal-6" class="btn">Cerrar</label>
+        </div>
+      </div>
+    </div>
     <script src="../js/index.js"></script>
   </body>
 </html>
