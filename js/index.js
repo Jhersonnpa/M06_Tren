@@ -137,28 +137,35 @@ function printarFactura() {
     let vips = carts[userCart].items.vip;
     let basics = carts[userCart].items.basic;
     let data = basicsI.concat(vipsI);
+    console.log(data);
     let vagones = data.filter((item, index) => {
         return data.indexOf(item) == index;
     });
+    vagones.sort(function (a, b) {
+        return a - b;
+    });
+    console.log("Vagones" + vagones);
     // Factura Div
     let facturaDiv = document.getElementById("factura");
     let info = '';
-    for (let i = 0; i < vagones.length; i++) {
+    // let i: number = (vips.length > 0) ? 0 : vagones[0];
+    // let limit: number = (vips.length > 0) ? vips.length :
+    vagones.map((vagon, i) => {
         info += `<div class='bg-slate-200 p-2 rounded'>`;
-        ((i == 0) || (i == 1)) ? info += `<p class='text-xl font-medium'>Vagon ${i + 1} <i class="bx bxs-crown text-yellow-600"></i></p>` : info += `<p class='text-xl font-medium'>Vagon ${i + 1} </p>`;
+        ((vagon == 0) || (vagon == 1)) ? info += `<p class='text-xl font-medium'>Vagon ${i + 1} <i class="bx bxs-crown text-yellow-600"></i></p>` : info += `<p class='text-xl font-medium'>Vagon ${i + 1} </p>`;
         info += `<span> Asientos: `;
         vips.map((item) => {
-            if (item.i == i)
+            if (item.i == vagon)
                 info += `  º${item.j + 1}`;
         });
         basics.map((item) => {
-            if (item.i == i)
+            if (item.i == vagon)
                 info += `  º${item.j + 1}`;
         });
         info += '</span>';
         info += `</div>`;
         info += '<div class="divider"></div>';
-    }
+    });
     facturaDiv.innerHTML = info;
     let totalFactura = document.getElementById("total-factura");
     totalFactura.innerText = `${(basics.length * 60) + (vips.length * 120)}`;
@@ -227,8 +234,8 @@ function actualizarCarro() {
     let vips = carts[userCart].items.vip;
     items.innerText = basics.length + vips.length;
     infoItems.innerText = basics.length + vips.length;
-    vips.length ? vipsSpan.innerText = `${vips.length} Vips x 120€ = ${vips.length * 120}€` : '';
-    basics.length ? basicsSpan.innerText = `${basics.length} Basicos x 60€ = ${basics.length * 60}€` : '';
+    vipsSpan.innerText = (vips.length > 0) ? `${vips.length} Vips x 120€ = ${vips.length * 120}€` : '';
+    basicsSpan.innerText = (basics.length > 0) ? `${basics.length} Basicos x 60€ = ${basics.length * 60}€` : '';
     total.innerText = `${(basics.length * 60) + (vips.length * 120)}`;
 }
 function pagar() {
